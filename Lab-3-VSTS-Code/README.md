@@ -12,3 +12,7 @@ In this lab, you will learn how to use VSTS to deploy AWS Lambda severless funct
 4.1 If you use Visual Studio, you can start at step 2.1 and skip step 2.2 to create a AWS Lambda Project then push it to VSTS git repo.
 4.2 If you do not have Visual Studio, you will clone a simple project then push it to VSTS git repo.
 5. In AWS Account, create a Lambda Build project.
+6. 
+
+# Detailed Instructions
+[DDeploy AWS Lambda with Azure DevOps (VSTS) integrated with CodePDeploy - Detailed Instructions](./Lab-3-detail-steps.md)
