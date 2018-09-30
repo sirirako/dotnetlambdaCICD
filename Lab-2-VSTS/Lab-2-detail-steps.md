@@ -12,7 +12,7 @@ In this lab, you will learn how to use Azure DevOps to deploy AWS Lambda project
 ## Detail Steps
 1. Open Visual Studio, click File, New Project.  On the left menu, select Visual C#, AWS Lambda and choose AWS Lambda Project with Test (.NET Core). Name the project.
 
-![alt text](images/VS1.png "VS Lambda Project")
+![alt text](../images/VS1.png "VS Lambda Project")
 
 
 # 2.2 Do not use Visual Studio 2017
