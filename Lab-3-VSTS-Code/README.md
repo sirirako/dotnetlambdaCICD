@@ -1,4 +1,4 @@
-# Lab 2 - Deploy AWS Lambda with Azure DevOps (VSTS)
+# Lab 3 - Deploy AWS Lambda with Azure DevOps (VSTS) integrated with CodePipeline
 ### Overview
 In this lab, you will learn how to use VSTS to deploy AWS Lambda severless function.
 
@@ -11,5 +11,4 @@ In this lab, you will learn how to use VSTS to deploy AWS Lambda severless funct
 4. Create AWS Lambda Project.
 4.1 If you use Visual Studio, you can start at step 2.1 and skip step 2.2 to create a AWS Lambda Project then push it to VSTS git repo.
 4.2 If you do not have Visual Studio, you will clone a simple project then push it to VSTS git repo.
-5. In VSTS, create Build Pipeline which will build the Lambda Project and store in VSTS Artifact Location.
-6. In VSTS, create Deploy Pipeline to deploy the Artifact to you AWS Account to create the Lambda function. 
+5. In AWS Account, create a Lambda Build project.
