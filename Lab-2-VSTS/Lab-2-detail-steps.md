@@ -21,25 +21,35 @@ In this lab, you will learn how to use Azure DevOps to deploy AWS Lambda project
 
 ![alt text](../images/vsts2.png "Git Repo")
 
-`git clone https://XXXXX@dev.azure.com/XXXXXX/ReInventLambda/_git/ReInventLambda
+```
+git clone https://XXXXX@dev.azure.com/XXXXXX/ReInventLambda/_git/ReInventLambda
+```
 
 3. Go to the directory at you just clone.
 
-`cd .\ReinventLambda\
+```
+cd .\ReinventLambda\
+```
 
 4. Install AWS Lambda template 
 
-`dotnet new -i Amazon.Lambda.Templates
+```
+dotnet new -i Amazon.Lambda.Templates
+```
 
 Once the install is complete, verify if the Lambda templates show up.
 
-`dotnet new -all
+```
+dotnet new -all
+```
 
 ![alt text](../images/vsts3.png "Dotnet new")
 
 5. Create a new Lambda project. Choose function name, your AWS profile and AWS region
 
-`dotnet new lambda.EmptyFunction --name MyReInventFunction --profile default --region us-east-1
+```
+dotnet new lambda.EmptyFunction --name MyReInventFunction --profile default --region us-east-1
+```
 
 ![img](../images/vsts4.png)
 
