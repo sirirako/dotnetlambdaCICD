@@ -15,11 +15,11 @@ In this lab, you will learn how to use Azure DevOps to deploy AWS Lambda project
 # Detail Steps
 1. Log in to your Azure DevOps account and create a project. It takes some time to complete.
 
-![alt text](../images/VSTS1.png "VSTS Project")
+![alt text](../images/vsts1.png "VSTS Project")
 
 2. Click in the project and select Repos. Copy Git repo address.  On you command line type the command below to clone your newly created code repository to your local machine. Enter your PAT.
 
-![alt text](../images/VSTS2.png "Git Repo")
+![alt text](../images/vsts2.png "Git Repo")
 
 `git clone https://XXXXX@dev.azure.com/XXXXXX/ReInventLambda/_git/ReInventLambda
 
@@ -35,13 +35,13 @@ Once the install is complete, verify if the Lambda templates show up.
 
 `dotnet new -all
 
-![alt text](../images/VSTS3.png "Dotnet new")
+![alt text](../images/vsts3.png "Dotnet new")
 
 5. Create a new Lambda project. Choose function name, your AWS profile and AWS region
 
 `dotnet new lambda.EmptyFunction --name MyReInventFunction --profile default --region us-east-1
 
-![alt text](../images/VSTS4.png "Dotnet new")
+![img](../images/vsts4.png)
 
 1. Open Visual Studio, click File, New Project.  On the left menu, select Visual C#, AWS Lambda and choose AWS Lambda Project with Test (.NET Core). Name the project.
 
