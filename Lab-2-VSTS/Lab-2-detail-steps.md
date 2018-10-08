@@ -5,11 +5,11 @@ In this lab, you will learn how to use Azure DevOps to deploy AWS Lambda project
 
 
 # Before you begin
-1. Follow this instruction to install AWS tools for Visual Studio 2017.
-2. AWS Account and configure AWS profile.
+1. Follow this [instruction](https://docs.aws.amazon.com/vsts/latest/userguide/getting-started.html#install-the-aws-tools-for-vsts-extension) to install AWS tools for Visual Studio 2017.
+2. AWS Account and follow this [instruction](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) to configure AWS profile.
 3. VSTS Account
-4. Install Git
-5. Install .NET Core CLI 
+4. Install Git by following this [instruction](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+5. Install .NET Core CLI by following this [instruction](https://www.microsoft.com/net/download)
 
 
 # Detail Steps
@@ -17,7 +17,7 @@ In this lab, you will learn how to use Azure DevOps to deploy AWS Lambda project
 
 ![alt text](../images/vsts1.png "VSTS Project")
 
-Once it is complete, follow this instruction to Add AWS service connection for this project.
+Once it is complete, follow this [instruction](https://docs.aws.amazon.com/vsts/latest/userguide/getting-started.html#set-up-aws-credentials-for-the-aws-tools-for-vsts) to Add AWS service connection for this project.
 
 2. Click in the project and select Repos. Copy Git repo address.  On you command line type the command below to clone your newly created code repository to your local machine. Enter your PAT.
 
@@ -112,4 +112,52 @@ Select Save & queue.
 
 ## Create Release pipeline
 
-16. 
+16. Select Pipelines, Releases and New Release pipeline. In the New release pipeline, select start witn an Empty job.
+
+![img](../images/vsts14.png)
+
+17. To add the artifact to the release pipeline, click Artifact and then select project, build pipeline, Default version will be used for this pipeline. 
+
+![img](../images/vsts15.png)
+
+Click Add.
+
+18. Click Stage and name the stage. Click 1 job, 0 task to view task. At Agent job, click + to add a task. In the search box, type AWS. Select AWS Lambda Deploy Function and click Add.
+
+![img](../images/vsts16.png)
+
+19. Configure Deploy Lambda Function task.
+- Type the name, select AWS Credential and AWS Region.
+- Select "Update code and configuration (or create a new function)" for Deployment Mode.
+- Enter Function Name to be created.
+- Enter Function Handler and Runtime.
+- Select Zip file in the work area for Code Location.  This is the artifact localtion from the build pipeline.
+- For Zip File Path, click browse to find the zip file location.
+- For Role ARN or Name, enter the Lambda execution role for this lambda function.  Follow this instruction if you do not have one.
+- Leave everything else as default such as Memory Size and Timeout.
+
+![img](../images/vsts17.png)
+
+Click Save (at the top) to save the pipeline.
+
+20. At the top, click Release and select Create a release. Review the release and click Create.
+
+![img](../images/vsts18.png)
+
+21. Select the release to view its status.  
+
+![img](../images/vsts20.png)
+
+22. Log in to AWS Lambda console to view the Function.
+
+![img](../images/vsts20.png)
+
+## Testing the function using .net CLI
+23. Install dotnet Lambda Tools and test the function.
+
+```
+dotnet tool install -g Amazon.Lambda.Tools
+dotnet lambda invoke-function MyReInventFunction --payload "Just checking"
+```
+
+![img](../images/vsts21.png)
