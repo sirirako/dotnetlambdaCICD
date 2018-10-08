@@ -13,6 +13,7 @@ In this lab, you will learn how to use Azure DevOps to deploy AWS Lambda project
 
 
 # Detail Steps
+## Create Azure DevOps project.
 1. Log in to your Azure DevOps account and create a project. It takes some time to complete.  
 
 ![alt text](../images/vsts1.png "VSTS Project")
@@ -29,12 +30,12 @@ git clone https://XXXXX@dev.azure.com/XXXXXX/ReInventLambda/_git/ReInventLambda
 
 Select Add ReadMe file and add gitignore for VisualStudio.  Click Initialize.
 
-3. Go to the directory at you just clone.
+3. Go to the directory that you just clone.
 
 ```
 cd .\ReinventLambda\
 ```
-
+## Create a simple Lambda project
 4. Install AWS Lambda template 
 
 ```
@@ -54,7 +55,7 @@ dotnet new -all
 ```
 dotnet new lambda.EmptyFunction --name MyReInventFunction --profile default --region us-east-1
 ```
-
+## Commit the source code to Azure DevOps repository
 6. Commit the new code to local and remote (Azure DevOps) repository.
 
 ```
@@ -133,7 +134,7 @@ Click Add.
 - Enter Function Handler and Runtime.
 - Select Zip file in the work area for Code Location.  This is the artifact localtion from the build pipeline.
 - For Zip File Path, click browse to find the zip file location.
-- For Role ARN or Name, enter the Lambda execution role for this lambda function.  Follow this instruction if you do not have one.
+- For Role ARN or Name, enter the Lambda execution role for this lambda function.  Follow this [instruction](https://docs.aws.amazon.com/lambda/latest/dg/with-userapp-walkthrough-custom-events-create-iam-role.html) if you do not have one.
 - Leave everything else as default such as Memory Size and Timeout.
 
 ![img](../images/vsts17.png)
