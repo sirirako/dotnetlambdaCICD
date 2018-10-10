@@ -14,7 +14,7 @@ In this lab, you will learn how to use Azure DevOps to deploy AWS Lambda project
 6. Install .NET Core CLI by following this [instruction](https://www.microsoft.com/net/download)
 
 
-# Detail Steps
+# Detailed Steps
 ## Create Azure DevOps project.
 1. Log in to your Azure DevOps account and create a project. It takes some time to complete.  
 
