@@ -167,11 +167,11 @@ Click Save (at the top) to save the pipeline.
 
 21. Select the release to view its status.  
 
-![img](../images/vsts20.png)
+![img](../images/vsts19.png)
 
 22. Log in to AWS Lambda console to view the Function.
 
-![img](../images/vsts20.png)
+
 
 ## Testing the function using .net CLI
 23. Install dotnet Lambda Tools and test the function.
@@ -181,4 +181,4 @@ dotnet tool install -g Amazon.Lambda.Tools
 dotnet lambda invoke-function MyReInventFunction --payload "Just checking"
 ```
 
-![img](../images/vsts21.png)
+![img](../images/vsts20.png)
