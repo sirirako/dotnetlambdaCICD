@@ -76,7 +76,7 @@ Examine MyReInventFunction.csproj. If it does not have an ItemGroup that referen
   <ItemGroup>
     <DotNetCliToolReference Include="Amazon.Lambda.Tools" Version="2.2.0" />
   </ItemGroup>
-  
+
 ```
 ## Commit the source code to Azure DevOps repository
 6. Commit the new code to local and remote (Azure DevOps) repository.
@@ -141,6 +141,10 @@ If you face this error, go into Azure DevOps repo. Edit and re-save aws-lambda-t
 ![img](../images/vsts13.png)
 
 Select Save & queue. 
+
+Examine Build logs.
+
+![img](../images/vsts25.png)
 
 ## Create Release pipeline
 
