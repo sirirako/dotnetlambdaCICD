@@ -51,7 +51,7 @@ git clone https://XXXXX@dev.azure.com/XXXXXX/ReInventLambda/_git/ReInventLambda
 cd .\ReinventLambda\
 ```
 ## Create a simple Lambda project
-4. Install AWS Lambda template 
+4. Install AWS Lambda template. 
 
 ```
 dotnet new -i Amazon.Lambda.Templates
@@ -65,10 +65,18 @@ dotnet new -all
 
 ![alt text](../images/vsts3.png "Dotnet new")
 
-5. Create a new Lambda project. Choose function name, your AWS profile and AWS region
+5. Create a new Lambda project. Choose function name, your AWS profile and AWS region.
 
 ```
 dotnet new lambda.EmptyFunction --name MyReInventFunction --profile default --region us-east-1
+```
+Examine MyReInventFunction.csproj. If it does not have an ItemGroup that reference to Amazon.Lambda.Tools, you need to add it.
+
+```
+  <ItemGroup>
+    <DotNetCliToolReference Include="Amazon.Lambda.Tools" Version="2.2.0" />
+  </ItemGroup>
+  
 ```
 ## Commit the source code to Azure DevOps repository
 6. Commit the new code to local and remote (Azure DevOps) repository.
@@ -83,11 +91,11 @@ git push
 
 ## Create Build pipeline
 
-8. Select Pipelines, Builds, hit + button and select New build pipeline
+8. Select Pipelines, Builds, hit + button and select New build pipeline.
 
 ![img](../images/vsts6.png)
 
-9. Select Team project, Repository and branch. Click Continue
+9. Select Team project, Repository and branch. Click Continue.
 
 ![img](../images/vsts7.png)
 
@@ -122,7 +130,11 @@ git push
 
 Select Save & queue.  (Bugs alert.  I had to copy aws-lambda-tools-defaults.json from VS project to fix build issue.)
 
-Examine Build logs.
+Examine Build logs.  
+
+If you face this error, go into Azure DevOps repo. Edit and re-save aws-lambda-tools-defaults.json.
+
+![img](../images/vsts24.png)
 
 15. Edit the Build pipeline to add Pubish Artifact task. Configure task as seen below.  Path to Publish is the Package-only output file from the previous step.
 
