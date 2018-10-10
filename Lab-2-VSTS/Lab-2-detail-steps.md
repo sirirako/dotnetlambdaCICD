@@ -7,9 +7,11 @@ In this lab, you will learn how to use Azure DevOps to deploy AWS Lambda project
 # Before you begin
 1. Follow this [instruction](https://docs.aws.amazon.com/vsts/latest/userguide/getting-started.html#install-the-aws-tools-for-vsts-extension) to install AWS tools for Visual Studio 2017.
 2. AWS Account and follow this [instruction](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) to configure AWS profile.
-3. VSTS Account
-4. Install Git by following this [instruction](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-5. Install .NET Core CLI by following this [instruction](https://www.microsoft.com/net/download)
+3. Obtain Access Key ID and Secret Access Key from an IAM User by following this [instruction.](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
+4. Creat a Lambda function execution role by follow this [instruction](https://docs.aws.amazon.com/lambda/latest/dg/with-userapp-walkthrough-custom-events-create-iam-role.html). For this workshop, you can select AWSLambdaBasicExecutionRole.
+4. VSTS Account
+5. Install Git by following this [instruction](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+6. Install .NET Core CLI by following this [instruction](https://www.microsoft.com/net/download)
 
 
 # Detail Steps
@@ -18,7 +20,18 @@ In this lab, you will learn how to use Azure DevOps to deploy AWS Lambda project
 
 ![alt text](../images/vsts1.png "VSTS Project")
 
-Once it is complete, follow this [instruction](https://docs.aws.amazon.com/vsts/latest/userguide/getting-started.html#set-up-aws-credentials-for-the-aws-tools-for-vsts) to Add AWS service connection for this project.
+2. Create AWS service connection for this project. 
+- On your Summary page on this preject, go to Project Settings by clicking Project settings which is on the bottom left menu bar. 
+- Click Service connection under Pipelines then click + New service connection.
+
+![alt text](../images/vsts21.png "VSTS Project")
+
+- Enter Access Key ID and Secret Access Key of your IAM user.
+
+![alt text](../images/vsts21.png "VSTS Project")
+
+
+For more information see this [instruction](https://docs.aws.amazon.com/vsts/latest/userguide/getting-started.html#set-up-aws-credentials-for-the-aws-tools-for-vsts) to Add AWS service connection for this project.
 
 2. Click in the project and select Repos. Copy Git repo address.  On you command line type the command below to clone your newly created code repository to your local machine. Enter your PAT.
 
@@ -60,7 +73,7 @@ dotnet new lambda.EmptyFunction --name MyReInventFunction --profile default --re
 
 ```
 git add *
-git commit -m "Lambda empty fuction first commit"
+git commit -m "Lambda empty function first commit"
 git push
 ```
 
@@ -96,8 +109,12 @@ git push
 - Type the name, select AWS Credential and AWS Region. 
 - Because this project is the Lambda Function project, select Function as Deployment Type. 
 - We are going to create the deployment package only the Build step.  
-- Enter $(Build.ArtifactStagingDirectory)\ReInventLambda.zip as Package-only output file. Browse to the location of the Lambda Project for Path to Lambda Project.
-- Do not need to fill Lambda Function Properties, Advanced, Control Options and OUtput Variables.
+- Enter $(Build.ArtifactStagingDirectory)\ReInventLambda.zip as Package-only output file. 
+- For Path to Lambda Project, browse to the location of the Lambda Project.
+
+![img](../images/vsts23.png)
+
+- Do not need to fill Lambda Function Properties, Advanced, Control Options and Output Variables.
 
 ![img](../images/vsts12.png)
 
@@ -113,7 +130,7 @@ Select Save & queue.
 
 ## Create Release pipeline
 
-16. Select Pipelines, Releases and New Release pipeline. In the New release pipeline, select start witn an Empty job.
+16. Select Pipelines, Releases and New Release pipeline. In the New release pipeline, select start with an Empty job.
 
 ![img](../images/vsts14.png)
 
@@ -131,10 +148,11 @@ Click Add.
 - Type the name, select AWS Credential and AWS Region.
 - Select "Update code and configuration (or create a new function)" for Deployment Mode.
 - Enter Function Name to be created.
-- Enter Function Handler and Runtime.
-- Select Zip file in the work area for Code Location.  This is the artifact localtion from the build pipeline.
+- Enter Function Handler. .Net Function handler is in the format of Assembly::Namespace.ClassName::MethodName.  In this case, it is MyReInventFunction::MyReInventFunction.Function::FunctionHandler.
+- Enter Runtime of the project which is dotnetcore2.1
+- Select Zip file in the work area for Code Location.  This is the artifact location from the build pipeline.
 - For Zip File Path, click browse to find the zip file location.
-- For Role ARN or Name, enter the Lambda execution role for this lambda function.  Follow this [instruction](https://docs.aws.amazon.com/lambda/latest/dg/with-userapp-walkthrough-custom-events-create-iam-role.html) if you do not have one.
+- For Role ARN or Name, enter the Lambda execution role created earlier.
 - Leave everything else as default such as Memory Size and Timeout.
 
 ![img](../images/vsts17.png)

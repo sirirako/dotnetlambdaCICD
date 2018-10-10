@@ -10,9 +10,10 @@ This workshop demonstrate several ways to deploy AWS Lambda to AWS account.
 
 ## Prerequisites
 
-1. AWS Account
-
-For VSTS
+1. AWS Account and AWS CLI configured.
 2. AWS Azure DevOps account
-3. Visual Studio (Optional)
+3. .Net Core CLI 
+4. Git CLI
+
+
 
