@@ -28,20 +28,22 @@ In this lab, you will learn how to use Azure DevOps to deploy AWS Lambda project
 
 - Enter Access Key ID and Secret Access Key of your IAM user.
 
-![alt text](../images/vsts21.png "VSTS Project")
+![alt text](../images/vsts22.png "VSTS Project")
 
 
 For more information see this [instruction](https://docs.aws.amazon.com/vsts/latest/userguide/getting-started.html#set-up-aws-credentials-for-the-aws-tools-for-vsts) to Add AWS service connection for this project.
 
-2. Click in the project and select Repos. Copy Git repo address.  On you command line type the command below to clone your newly created code repository to your local machine. Enter your PAT.
+2. Click in the project and select Repos. Copy Git repo address.  
 
 ![alt text](../images/vsts2.png "Git Repo")
+
+Select Add ReadMe file and add gitignore for VisualStudio.  Click Initialize.
+
+On you command line type the command below to clone your newly created code repository to your local machine. Enter your PAT.
 
 ```
 git clone https://XXXXX@dev.azure.com/XXXXXX/ReInventLambda/_git/ReInventLambda
 ```
-
-Select Add ReadMe file and add gitignore for VisualStudio.  Click Initialize.
 
 3. Go to the directory that you just clone.
 
